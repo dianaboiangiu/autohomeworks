@@ -19,44 +19,69 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Course',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True, primary_key=True,
+                                        serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=100)),
                 ('description', models.CharField(max_length=100)),
-                ('date_created', models.CharField(max_length=300)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('created_by', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='owner', to=settings.AUTH_USER_MODEL)),
-                ('members', models.ManyToManyField(related_name='courses', to=settings.AUTH_USER_MODEL)),
+                ('created_by', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    related_name='owner', to=settings.AUTH_USER_MODEL)),
+                ('members', models.ManyToManyField(
+                    blank=True,
+                    related_name='courses',
+                    to=settings.AUTH_USER_MODEL,
+
+                )),
             ],
         ),
         migrations.CreateModel(
             name='Homework',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True,
+                                        serialize=False,
+                                        verbose_name='ID')),
                 ('title', models.CharField(max_length=100)),
                 ('description', models.CharField(max_length=300)),
                 ('test_file', models.FileField(upload_to='')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('due_date', models.DateTimeField()),
-                ('course', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='homeworks.Course')),
+                ('course', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to='homeworks.Course')),
             ],
         ),
         migrations.CreateModel(
             name='Material',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True,
+                                        serialize=False,
+                                        verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('file', models.FileField(upload_to='')),
-                ('course', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='homeworks.Course')),
+                ('course', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to='homeworks.Course')
+                 ),
             ],
         ),
         migrations.CreateModel(
             name='Solution',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True, primary_key=True,
+                                        serialize=False, verbose_name='ID')),
                 ('tests_status', models.CharField(max_length=200)),
                 ('tests_summary', models.CharField(max_length=400)),
-                ('homework', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='homeworks.Homework')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('homework', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to='homeworks.Homework')
+                 ),
+                ('user', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to=settings.AUTH_USER_MODEL)
+                 ),
             ],
         ),
     ]

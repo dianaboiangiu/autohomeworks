@@ -9,9 +9,9 @@ class Course(models.Model):
     created_by = models.ForeignKey(User, related_name='owner')
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=100)
-    date_created = models.CharField(max_length=300)
     created_at = models.DateTimeField(auto_now_add=True)
-    members = models.ManyToManyField(User, related_name='courses')
+    members = models.ManyToManyField(User, related_name='courses',
+                                     blank=True)
 
     def __str__(self):
         return 'Course {name}'.format(name=self.name)

@@ -3,9 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from homeworks.models import *
-
-# Register your models here.
+from .models import Course, Homework, Material, Solution
 
 admin.site.register(Course)
 admin.site.register(Homework)
