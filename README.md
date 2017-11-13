@@ -8,6 +8,9 @@ create homeworks and automatically test the solutions proposed by the students.
 This application is developed with [Django](https://www.djangoproject.com/) and supported by [Docker](https://www.docker.com/).
 
 ----------------------------
+[![Travis](https://travis-ci.org/dianaboiangiu/autohomeworks.svg?branch=master)](https://travis-ci.org/dianaboiangiu/autohomeworks)
+[![Coverage](https://coveralls.io/repos/github/dianaboiangiu/autohomeworks/badge.svg?branch=master)](https://coveralls.io/github/dianaboiangiu/autohomeworks?branch=master)
+
 
 ## Installation
 
