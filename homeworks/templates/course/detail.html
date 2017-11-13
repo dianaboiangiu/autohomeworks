@@ -1,0 +1,38 @@
+{% extends '_layout.html' %}
+
+{% block title %}
+  Course {{ course.name }}
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <h1 class="col-sm-12">
+      <span>Course {{ course.name }} details</span>
+      <span class="pull-right">
+        <a class="btn btn-primary" href="{% url 'course:edit' course.pk %}">
+          Edit course
+        </a>
+      </span>
+    </h1>
+  </div>
+
+
+  <div class="row">
+    <table id="detail-table" class="table borderless col-sm-12">
+      <tbody>
+      <tr class="row">
+        <th class="col-md-4 col-sm-6">Created by:</th>
+        <td class="col-md-8 col-sm-6">{{ course.created_by.username }}</td>
+      </tr>
+      <tr class="row">
+        <th class="col-md-4 col-sm-6">Description:</th>
+        <td class="col-md-8 col-sm-6">{{ course.description }}</td>
+      </tr>
+      <tr class="row">
+        <th class="col-md-4 col-sm-6">Created at:</th>
+        <td class="col-md-8 col-sm-6">{{ course.created_at }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

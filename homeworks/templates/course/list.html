@@ -1,0 +1,25 @@
+{% extends '_layout.html' %}
+
+{% block title %}
+  Courses
+{% endblock %}
+
+{% block content %}
+
+  <div class="row">
+    <h1 class="col-sm-12">
+      <span>Courses</span>
+      <span class="pull-right">
+        <a class="btn btn-primary pull-right"
+           href="{% url 'course:add' %}">New courses</a>
+      </span>
+    </h1>
+  </div>
+
+  <div class="list-group">
+  {% for course in courses %}
+    <a href="{% url 'course:detail' course.pk %}" class="list-group-item">{{ course.name }}</a>
+    <hr>
+  {% endfor %}
+  </div>
+{% endblock %}

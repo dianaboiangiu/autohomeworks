@@ -1,0 +1,22 @@
+{% extends '_layout.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title %}
+  Edit course {{ course.name }}
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <h1>
+      <p class="col-sm-12">Edit course</p>
+      <p class="col-sm-12"><small>{{ course.name }}</small></p>
+    </h1>
+  </div>
+  {% bootstrap_form_errors form %}
+  <form action="" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input class="btn btn-primary" type="submit" value="Save" />
+  </form>
+{% endblock %}

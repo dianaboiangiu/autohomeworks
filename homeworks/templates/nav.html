@@ -1,0 +1,19 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target="#main-menu"
+              aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+    </div>
+  </div>
+  <div class="collapse navbar-collapse" id="main-menu">
+    <ul class="nav navbar-nav">
+      {% url 'course:list' as course_list %}
+      <li>
+        <a href="{{ course_list }}">Courses</a>
+      </li>
+    </ul>
+  </div>
+</nav>
