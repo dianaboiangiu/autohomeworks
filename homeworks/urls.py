@@ -22,9 +22,29 @@ course_patterns = [
 
 ]
 
+materials_patterns = [
+    url(r'^list/$',
+        views.MaterialList.as_view(),
+        name='list'),
+
+    url(r'^add/$',
+        views.MaterialAdd.as_view(),
+        name='add'),
+
+    url(r'^delete/(?P<pk>[0-9]+)/$',
+        views.MaterialDelete.as_view(),
+        name='delete'),
+]
+
+
 urlpatterns = [
 
     url(r'^course/',
         include(course_patterns,
                 namespace='course')),
+
+    url(r'^course/(?P<course_pk>[0-9]+)/material/',
+        include(materials_patterns,
+                namespace='material')),
+
 ]
