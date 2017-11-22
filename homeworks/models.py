@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
 from django.db import models
+import os
 
 
 class Course(models.Model):
@@ -20,7 +21,11 @@ class Course(models.Model):
 class Material(models.Model):
     course = models.ForeignKey(Course)
     created_at = models.DateTimeField(auto_now_add=True)
-    file = models.FileField()
+    file = models.FileField(upload_to='materials/')
+
+    @property
+    def filename(self):
+        return os.path.basename(self.file.name)
 
 
 class Homework(models.Model):

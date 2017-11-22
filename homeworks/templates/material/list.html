@@ -1,0 +1,30 @@
+{% extends '_layout.html' %}
+
+{% block title %}
+  Course {{ course.name }} - Materials
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <h1 class="col-sm-12">
+      <span>Course {{ course.name }} - Materials</span>
+    </h1>
+  </div>
+  <div>
+    <a class="btn btn-primary"
+       href="{% url 'material:add' course.pk %}">New material</a>
+  </div>
+  <div class="list-group">
+  {% for material in materials %}
+    <a href="{{ material.file.url }}" class="list-group-item">
+        {{ material.filename }}
+        <span class="pull-right">{{ material.created_at }}</span>
+    </a>
+    <a class="btn btn-primary pull-right" href="{% url 'material:delete' course.pk material.pk %}">
+      Delete material
+    </a>
+
+    <hr>
+  {% endfor %}
+  </div>
+{% endblock %}
